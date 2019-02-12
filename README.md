@@ -1,11 +1,7 @@
-**Notice: Development on this repository is currently on pause during our v3 rearchitecture. Please see [storj/storj](https://github.com/storj/storj) for ongoing v3 development.**
-
-Storj Service Mailer
+Internxt Service Mailer
 ====================
 
-[![Build Status](https://img.shields.io/travis/Storj/service-mailer.svg?style=flat-square)](https://travis-ci.org/Storj/service-mailer)
-
-Email dispatcher and templates for various Storj services.
+Email dispatcher and templates for various Internxt services.
 
 Installation and Usage
 ----------------------
