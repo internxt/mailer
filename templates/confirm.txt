@@ -1,4 +1,4 @@
-Welcome to Storj!
+Welcome to Internxt!
 =================
 
 Copy and paste the link below into a web browser to activate your account:
@@ -11,5 +11,4 @@ Copy and paste the link below into a web browser to activate your account:
 
 ---
 
-Cheers,
-The Storj Team
+Sent with love by Internxt
