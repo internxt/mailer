@@ -7,12 +7,12 @@ Installation and Usage
 ----------------------
 
 ```
-npm install storj-service-mailer --save
+npm install internxt-service-mailer --save
 ```
 
 ```js
-var StorjMailer = require('storj-service-mailer');
-var mailer = new StorjMailer({
+var InternxtMailer = require('internxt-service-mailer');
+var mailer = new InternxtMailer({
   host: '127.0.0.1',
   port: 465,
   secure: true,
@@ -20,7 +20,7 @@ var mailer = new StorjMailer({
     user: 'username',
     pass: 'password'
   },
-  from: 'robot@storj.io'
+  from: 'hello@internxt.com'
 });
 
 mailer.dispatch('<to_email_address>', '<template_name>', {
@@ -43,24 +43,4 @@ Choose a new name for the template and create 3 files:
 
 Once these files are added to the templates directory, you can reference them 
 by `templatename` when calling `Mailer#dispatch`.
-
-License
--------
-
-Storj Service Mailer - Email dispatcher for various Storj services  
-Copyright (C) 2016 Storj Labs, Inc
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see http://www.gnu.org/licenses/.
-
 
