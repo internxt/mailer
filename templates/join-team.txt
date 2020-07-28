@@ -1,0 +1,9 @@
+You've been invited
+=================
+
+{{memberName}}, you've been invited to join Company's team on {{teamName}}.
+
+{{urlAcceptInvitation}}
+---
+
+Sent with love by Internxt
