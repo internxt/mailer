@@ -4,10 +4,10 @@
 Internxt Drive is a cloud storage service (pretty much like Dropbox, Google Drive etc). 
 Unlike traditional services, however, Internxt truly respects your privacy. 
 Everything you upload to Internxt Drive is encrypted at all times, and no one other than you can access the files you upload. 
-You can sign up on any of Internxt's premium plans for free for a whole month, cancel anytime. 
-Additionally, you will automatically get a €5 credit to redeem if  you decide to renew your Internxt trial.
+You can sign up on any of Internxt's plans for free. You will automatically get €5 credit to redeem 
+on Internxt if you decide to upgrade your Internxt plan.
 
-Sign up with the link below to unlock your exclusive €5 credit!
+Sign up for free with the link below to unlock your exclusive €5 credit!
 
 {{url}}
 
