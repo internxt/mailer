@@ -11,7 +11,7 @@ npm install internxt-service-mailer --save
 ```
 
 ```js
-var InternxtMailer = require('internxt-service-mailer');
+var InternxtMailer = require('inxt-service-mailer');
 var mailer = new InternxtMailer({
   host: '127.0.0.1',
   port: 465,
