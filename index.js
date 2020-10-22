@@ -77,7 +77,7 @@ Mailer.prototype.dispatchSendGrid = function (email, template, context, callback
   var self = this;
   var done = callback || function () { };
 
-  if (!self.options || !self.options.sendgrid.api_key) {
+  if (!self._options || !self._options.sendgrid || !self._options.sendgrid.api_key) {
     return callback(new Error('No SendGrid API Key provided'));
   }
 
@@ -95,8 +95,11 @@ Mailer.prototype.dispatchSendGrid = function (email, template, context, callback
       text: compiled.plaintext
     };
 
-    self._transporter.sendMail(mailparams, done);
-    sgMail.send(mailparams).then(function () { callback() }).catch(function (err) { callback(err); })
+    sgMail.send(mailparams).then(function () {
+      callback()
+    }).catch(function (err) {
+      callback(err);
+    })
   });
 }
 
