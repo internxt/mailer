@@ -32,6 +32,30 @@ describe('Mailer', function() {
       })).to.be.instanceOf(Mailer);
     });
 
+    it('should fail if missing host/port', function() {
+      var mailer;
+      try {
+        mailer = new Mailer({
+        });
+      } catch (error) {
+        mailer = error;
+      }
+      expect(mailer).instanceOf(Error);
+    });
+
+    it('should not fail if missing host/port, but sendgrid api_key is provided', function() {
+      var mailer;
+      try {
+        mailer = new Mailer({
+          sendgrid: {
+            api_key: 'SG.TEST_API_KEY'
+          }
+        });
+      } catch (error) {
+        mailer = error;
+      }
+      expect(mailer).instanceOf(Mailer);
+    })
   });
 
   describe('#getTemplate', function() {
@@ -119,4 +143,16 @@ describe('Mailer', function() {
 
   });
 
+  describe('#dispatch with SendGrid', function() {
+    it ('should callback an error if not api key provided', function () {
+      var mailer = new Mailer({
+        host: 'fake.host',
+        port: 123
+      })
+
+      mailer.dispatchSendGrid('user@domain.tld', 'confirm', {}, function (err) {
+        expect(err).instanceOf(Error)
+      });
+    })
+  })
 });
