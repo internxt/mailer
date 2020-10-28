@@ -1,4 +1,4 @@
-Internxt Service Mailer
+Internxt Service Mailer [![Build Status](https://travis-ci.com/internxt/mailer.svg?branch=master)](https://travis-ci.com/internxt/mailer)
 ====================
 
 Email dispatcher and templates for various Internxt services.
