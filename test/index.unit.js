@@ -18,7 +18,7 @@ describe('Mailer', function() {
           user: 'username',
           pass: 'password'
         },
-        from: 'robot@storj.io'
+        from: 'robot@internxt.com'
       })).to.be.instanceOf(Mailer);
       expect(new Mailer({
         host: '127.0.0.1',
@@ -28,7 +28,7 @@ describe('Mailer', function() {
           user: 'username',
           pass: 'password'
         },
-        from: 'robot@storj.io'
+        from: 'robot@internxt.com'
       })).to.be.instanceOf(Mailer);
     });
 
@@ -69,7 +69,7 @@ describe('Mailer', function() {
           user: 'username',
           pass: 'password'
         },
-        from: 'robot@storj.io'
+        from: 'robot@internxt.com'
       });
       mailer.getTemplate('confirm', function(err, template) {
         expect(err).to.equal(null);
@@ -89,7 +89,7 @@ describe('Mailer', function() {
           user: 'username',
           pass: 'password'
         },
-        from: 'robot@storj.io'
+        from: 'robot@internxt.com'
       });
       mailer.getTemplate('INVALID', function(err) {
         expect(err).to.be.instanceOf(Error);
@@ -110,7 +110,7 @@ describe('Mailer', function() {
           user: 'username',
           pass: 'password'
         },
-        from: 'robot@storj.io'
+        from: 'robot@internxt.com'
       });
       mailer.dispatch('user@domain.tld', 'INVALID', {}, function(err) {
         expect(err).to.be.instanceOf(Error);
@@ -136,7 +136,7 @@ describe('Mailer', function() {
           user: 'username',
           pass: 'password'
         },
-        from: 'robot@storj.io'
+        from: 'robot@internxt.com'
       });
       mailer.dispatch('user@domain.tld', 'confirm', {}, done);
     });
