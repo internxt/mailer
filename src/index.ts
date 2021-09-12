@@ -15,7 +15,7 @@ interface MailerOptions extends Omit<SMTPTransport.Options, 'from'> {
   from: string
 }
 
-export default class Mailer {
+class Mailer {
   private options: MailerOptions;
   private transporter: nodemailer.Transporter;
 
@@ -193,3 +193,6 @@ export default class Mailer {
   };
 
 }
+
+export default Mailer;
+module.exports = Mailer;

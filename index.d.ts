@@ -6,7 +6,7 @@ interface MailerOptions extends Omit<SMTPTransport.Options, 'from'> {
     };
     from: string;
 }
-export default class Mailer {
+declare class Mailer {
     private options;
     private transporter;
     constructor(options: MailerOptions);
@@ -66,4 +66,4 @@ export default class Mailer {
      */
     private getTemplateResource;
 }
-export {};
+export default Mailer;

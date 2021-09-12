@@ -165,3 +165,4 @@ var Mailer = /** @class */ (function () {
     return Mailer;
 }());
 exports.default = Mailer;
+module.exports = Mailer;
