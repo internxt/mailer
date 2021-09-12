@@ -10,16 +10,6 @@ describe('Mailer', function() {
   describe('@constructor', function() {
 
     it('should create an instance with/out the new keyword', function() {
-      expect(Mailer({
-        host: '127.0.0.1',
-        port: 465,
-        secure: true,
-        auth: {
-          user: 'username',
-          pass: 'password'
-        },
-        from: 'robot@internxt.com'
-      })).to.be.instanceOf(Mailer);
       expect(new Mailer({
         host: '127.0.0.1',
         port: 465,
