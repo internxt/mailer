@@ -66,4 +66,5 @@ declare class Mailer {
      */
     private getTemplateResource;
 }
+export declare function MailerBuilder(options: MailerOptions): Mailer;
 export default Mailer;

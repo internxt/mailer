@@ -9,7 +9,7 @@ describe('Mailer', function() {
 
   describe('@constructor', function() {
 
-    it('should create an instance with/out the new keyword', function() {
+    it('should create an instance with the new keyword', function() {
       expect(new Mailer({
         host: '127.0.0.1',
         port: 465,

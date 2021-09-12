@@ -194,5 +194,9 @@ class Mailer {
 
 }
 
+export function MailerBuilder(options: MailerOptions) {
+  return new Mailer(options);
+}
+
 export default Mailer;
 module.exports = Mailer;

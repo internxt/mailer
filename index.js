@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MailerBuilder = void 0;
 var path_1 = __importDefault(require("path"));
 var fs_1 = __importDefault(require("fs"));
 var async_1 = __importDefault(require("async"));
@@ -164,5 +165,9 @@ var Mailer = /** @class */ (function () {
     ;
     return Mailer;
 }());
+function MailerBuilder(options) {
+    return new Mailer(options);
+}
+exports.MailerBuilder = MailerBuilder;
 exports.default = Mailer;
 module.exports = Mailer;
