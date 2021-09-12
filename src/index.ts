@@ -8,10 +8,11 @@ import sgMail from '@sendgrid/mail'
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { ContextName } from './context';
 
-interface MailerOptions extends SMTPTransport.Options {
+interface MailerOptions extends Omit<SMTPTransport.Options, 'from'> {
   sendgrid: {
     api_key: string
-  }
+  },
+  from: string
 }
 
 export default class Mailer {
