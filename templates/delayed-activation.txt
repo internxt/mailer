@@ -7,5 +7,4 @@ If you want to be put into a beta testing group for the new network, you can sig
 {{/if}}
 ---
 
-Cheers,
-The Internxt Team
+Sent with love by Internxt

@@ -6,5 +6,5 @@ A new payment method has been added to your account.
 Thanks for using Internxt!
 
 ---
-Cheers,
-The Internxt Team
+
+Sent with love by Internxt
