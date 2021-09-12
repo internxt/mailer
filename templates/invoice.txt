@@ -1,13 +1,12 @@
-Hello from the Storj team!
+Hello from the Internxt team!
 ==========================
 
-You have a new invoice from Storj Labs for ${{amount}}.
+You have a new invoice from Internxt for ${{amount}}.
 
 You used {{storage}}GB of storage and {{bandwidth}}GB of bandwidth this month.
 
-Thanks for using Storj!
+Thanks for using Internxt!
 
 ---
 
-Cheers,
-The Storj Team
+Sent with love by Internxt
