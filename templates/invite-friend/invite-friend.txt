@@ -1,0 +1,19 @@
+{{#if hostFullName}}
+{{hostFullName}} invited you to check out Internxt!
+{{else}}
+You've been invited to Internxt!
+{{/if}}
+
+=================
+
+Hi there,
+
+{{#if hostFullName}} {{hostFullName}} ({{hostEmail}}) {{else}} {{hostEmail}} {{/if}} thinks you should use Internxt Drive! It's a free and easy way to securely store, access and shares your files, photos and videos.
+
+Get started through this email, and you'll get up to 10 GB of free space.
+
+{{registerUrl}}
+
+---
+
+Sent with love by Internxt

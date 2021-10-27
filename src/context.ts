@@ -1,4 +1,4 @@
-export type ContextName = 'add-card' | 'confirm' | 'delayed-activation' | 'delete' | 'inactive' | 'invoice' | 'join-team' | 'payment-confirmation' | 'referral' | 'reset'
+export type ContextName = 'add-card' | 'confirm' | 'delayed-activation' | 'delete' | 'inactive' | 'invoice' | 'join-team' | 'join-workspace' | 'invite-friend' | 'payment-confirmation' | 'referral' | 'reset'
 
 interface AddCardContext {
 
@@ -34,6 +34,13 @@ interface JoinTeamContext {
     memberName: string
     teamName: string
     urlAcceptInvitation: string
+}
+
+interface InviteFriendContext {
+    inviteEmail: string;
+    hostEmail: string;
+    hostFullName: string;
+    registerUrl: string;
 }
 
 interface PaymentConfirmationContext {
