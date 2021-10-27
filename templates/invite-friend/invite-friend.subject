@@ -1,0 +1,5 @@
+{{#if hostFullName}}
+{{hostFullName}} invited you to check out Internxt!
+{{else}}
+You've been invited to Internxt!
+{{/if}}

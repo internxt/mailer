@@ -143,7 +143,7 @@ class Mailer {
    * @param {Function} callback
    */
   private getSubject(name: string, callback: any) {
-    this.getTemplateResource([name, 'subject'].join('.'), callback);
+    this.getTemplateResource([[name, name].join('/'), 'subject'].join('.'), callback);
   };
 
   /**
@@ -153,7 +153,7 @@ class Mailer {
    * @param {Function} callback
    */
   private getMarkup(name: string, callback: any) {
-    this.getTemplateResource([name, 'html'].join('.'), callback);
+    this.getTemplateResource([[name, name].join('/'), 'html'].join('.'), callback);
   };
 
   /**
@@ -163,7 +163,7 @@ class Mailer {
    * @param {Function} callback
    */
   private getPlaintext(name: string, callback: any) {
-    this.getTemplateResource([name, 'txt'].join('.'), callback);
+    this.getTemplateResource([[name, name].join('/'), 'txt'].join('.'), callback);
   };
 
 

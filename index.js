@@ -120,7 +120,7 @@ var Mailer = /** @class */ (function () {
      * @param {Function} callback
      */
     Mailer.prototype.getSubject = function (name, callback) {
-        this.getTemplateResource([name, 'subject'].join('.'), callback);
+        this.getTemplateResource([[name, name].join('/'), 'subject'].join('.'), callback);
     };
     ;
     /**
@@ -130,7 +130,7 @@ var Mailer = /** @class */ (function () {
      * @param {Function} callback
      */
     Mailer.prototype.getMarkup = function (name, callback) {
-        this.getTemplateResource([name, 'html'].join('.'), callback);
+        this.getTemplateResource([[name, name].join('/'), 'html'].join('.'), callback);
     };
     ;
     /**
@@ -140,7 +140,7 @@ var Mailer = /** @class */ (function () {
      * @param {Function} callback
      */
     Mailer.prototype.getPlaintext = function (name, callback) {
-        this.getTemplateResource([name, 'txt'].join('.'), callback);
+        this.getTemplateResource([[name, name].join('/'), 'txt'].join('.'), callback);
     };
     ;
     /**

@@ -6,6 +6,7 @@ You've been invited to a personal workspace
 By joining this workspace all your data will be lost. For strict security reasons and to protect your data at Internxt you will be given a new encryption key and you will be able to use your Internxt account from 0. This action cannot be undone.
 
 {{url}}
+
 ---
 
 Sent with love by Internxt
