@@ -1,6 +1,6 @@
 {
   "name": "inxt-service-mailer",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "email dispatcher and templates for Internxt services",
   "main": "index.js",
   "scripts": {
