@@ -1,0 +1,11 @@
+Please verify your email address
+=================
+
+Hi {{name}}!
+
+Follow this link to verify your email address:
+{{url}}
+
+---
+
+Sent with love by Internxt

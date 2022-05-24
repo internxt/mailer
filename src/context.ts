@@ -1,4 +1,4 @@
-export type ContextName = 'add-card' | 'confirm' | 'delayed-activation' | 'delete' | 'inactive' | 'invoice' | 'join-team' | 'join-workspace' | 'invite-friend' | 'payment-confirmation' | 'referral' | 'reset'
+export type ContextName = 'add-card' | 'confirm' | 'delayed-activation' | 'delete' | 'inactive' | 'invoice' | 'join-team' | 'join-workspace' | 'invite-friend' | 'payment-confirmation' | 'referral' | 'reset' | 'verify-email'
 
 interface AddCardContext {
 
@@ -56,4 +56,9 @@ interface ResetContext {
     redirect?: string
     url: string
     token: string
+}
+
+interface VerifyEmailContext {
+    name: string
+    url: string
 }
