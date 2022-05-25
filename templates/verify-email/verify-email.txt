@@ -1,11 +1,9 @@
 Please verify your email address
 =================
 
-Hi {{name}}!
-
-Follow this link to verify your email address:
+Hi {{firstName}},
+Thank you for creating an Internxt account. Before you get started, please verify your email.
 {{url}}
 
----
-
-Sent with love by Internxt
+Best regards,
+Internxt Team
