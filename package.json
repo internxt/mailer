@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/internxt/mailer#readme",
   "dependencies": {
-    "@sendgrid/mail": "^7.3.0",
+    "@sendgrid/mail": "^8.1.5",
     "async": "^3.1.0",
     "handlebars": "^4.1.2",
     "nodemailer": "^6.3.0"
