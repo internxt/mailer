@@ -27,12 +27,12 @@
     "@sendgrid/mail": "^8.1.6",
     "async": "^3.1.0",
     "handlebars": "^4.1.2",
-    "nodemailer": "^6.3.0"
+    "nodemailer": "^7.0.10"
   },
   "devDependencies": {
     "@types/async": "^3.2.7",
     "@types/node": "^16.9.1",
-    "@types/nodemailer": "^6.4.4",
+    "@types/nodemailer": "^7.0.4",
     "chai": "^4.2.0",
     "mocha": "^11.7.5",
     "proxyquire": "^2.1.3",
