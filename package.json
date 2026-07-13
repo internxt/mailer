@@ -27,7 +27,7 @@
     "@sendgrid/mail": "^8.1.6",
     "async": "^3.1.0",
     "handlebars": "^4.7.9",
-    "nodemailer": "^7.0.10"
+    "nodemailer": "^9.0.1"
   },
   "devDependencies": {
     "@types/async": "^3.2.7",
