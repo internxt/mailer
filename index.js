@@ -3,12 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MailerBuilder = void 0;
+exports.MailerBuilder = MailerBuilder;
 var path_1 = __importDefault(require("path"));
 var fs_1 = __importDefault(require("fs"));
-var async_1 = __importDefault(require("async"));
 var assert_1 = __importDefault(require("assert"));
-var nodemailer_1 = __importDefault(require("nodemailer"));
 var handlebars_1 = __importDefault(require("handlebars"));
 var mail_1 = __importDefault(require("@sendgrid/mail"));
 var Mailer = /** @class */ (function () {
@@ -22,35 +20,7 @@ var Mailer = /** @class */ (function () {
             mail_1.default.setApiKey(options.sendgrid.api_key);
         }
         this.options = options;
-        this.transporter = nodemailer_1.default.createTransport(options);
     }
-    /**
-     * Sends the email template to the specified address
-     * using SMTP protocol
-     * #dispatch
-     * @param {String} email
-     * @param {String} template
-     * @param {Object} context
-     * @param {Function} callback
-     */
-    Mailer.prototype.dispatch = function (email, template, context, callback) {
-        var _this = this;
-        var done = callback || function () { };
-        this.getTemplate(template, function (err, template) {
-            if (err) {
-                return done(err);
-            }
-            var compiled = template(context);
-            var mailparams = {
-                to: email,
-                from: _this.options.from,
-                subject: compiled.subject,
-                html: compiled.markup,
-                text: compiled.plaintext
-            };
-            _this.transporter.sendMail(mailparams, done);
-        });
-    };
     /**
    * Sends the email template to the specified address,
    * using SendGrid API
@@ -92,16 +62,16 @@ var Mailer = /** @class */ (function () {
      * @param {Function} callback
      */
     Mailer.prototype.getTemplate = function (name, callback) {
+        var _this = this;
         assert_1.default.ok(name, 'No template name was supplied');
-        var stack = [
-            this.getSubject.bind(this, name),
-            this.getMarkup.bind(this, name),
-            this.getPlaintext.bind(this, name)
-        ];
-        async_1.default.parallel(stack, function (err, results) {
-            if (err) {
-                return callback(err);
-            }
+        var loaders = [this.getSubject, this.getMarkup, this.getPlaintext].map(function (loader) {
+            return new Promise(function (resolve, reject) {
+                loader.call(_this, name, function (err, template) {
+                    err ? reject(err) : resolve(template);
+                });
+            });
+        });
+        Promise.all(loaders).then(function (results) {
             callback(null, function render(data) {
                 data = data || {};
                 return {
@@ -110,7 +80,7 @@ var Mailer = /** @class */ (function () {
                     plaintext: results[2](data)
                 };
             });
-        });
+        }, function (err) { return callback(err); });
     };
     ;
     /**
@@ -168,6 +138,5 @@ var Mailer = /** @class */ (function () {
 function MailerBuilder(options) {
     return new Mailer(options);
 }
-exports.MailerBuilder = MailerBuilder;
 exports.default = Mailer;
 module.exports = Mailer;

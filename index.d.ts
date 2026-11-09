@@ -1,25 +1,14 @@
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { ContextName } from './context';
-interface MailerOptions extends Omit<SMTPTransport.Options, 'from'> {
+interface MailerOptions {
     sendgrid: {
         api_key: string;
     };
     from: string;
+    [key: string]: any;
 }
 declare class Mailer {
     private options;
-    private transporter;
     constructor(options: MailerOptions);
-    /**
-     * Sends the email template to the specified address
-     * using SMTP protocol
-     * #dispatch
-     * @param {String} email
-     * @param {String} template
-     * @param {Object} context
-     * @param {Function} callback
-     */
-    dispatch(email: string, template: ContextName, context: any, callback: any): void;
     /**
    * Sends the email template to the specified address,
    * using SendGrid API
