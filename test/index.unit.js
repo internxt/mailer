@@ -1,8 +1,6 @@
 'use strict';
 
 const expect = require('chai').expect;
-const sinon = require('sinon');
-const proxyquire = require('proxyquire');
 const Mailer = require('..');
 
 describe('Mailer', function() {
@@ -85,50 +83,6 @@ describe('Mailer', function() {
         expect(err).to.be.instanceOf(Error);
         done();
       });
-    });
-
-  });
-
-  describe('#dispatch', function() {
-
-    it('should bubble error if no template', function(done) {
-      var mailer = new Mailer({
-        host: '127.0.0.1',
-        port: 465,
-        secure: true,
-        auth: {
-          user: 'username',
-          pass: 'password'
-        },
-        from: 'robot@internxt.com'
-      });
-      mailer.dispatch('user@domain.tld', 'INVALID', {}, function(err) {
-        expect(err).to.be.instanceOf(Error);
-        done();
-      });
-    });
-
-    it('should call the mail transport sendMail method', function(done) {
-      var FakeMailer = proxyquire('..', {
-        nodemailer: {
-          createTransport: function() {
-            return {
-              sendMail: sinon.stub().callsArg(1)
-            };
-          }
-        }
-      });
-      var mailer = new FakeMailer({
-        host: '127.0.0.1',
-        port: 465,
-        secure: true,
-        auth: {
-          user: 'username',
-          pass: 'password'
-        },
-        from: 'robot@internxt.com'
-      });
-      mailer.dispatch('user@domain.tld', 'confirm', {}, done);
     });
 
   });

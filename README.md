@@ -13,17 +13,11 @@ npm install internxt-service-mailer --save
 ```js
 var InternxtMailer = require('inxt-service-mailer');
 var mailer = new InternxtMailer({
-  host: '127.0.0.1',
-  port: 465,
-  secure: true,
-  auth: {
-    user: 'username',
-    pass: 'password'
-  },
+  sendgrid: { api_key: process.env.SENDGRID_API_KEY },
   from: 'hello@internxt.com'
 });
 
-mailer.dispatch('<to_email_address>', '<template_name>', {
+mailer.dispatchSendGrid('<to_email_address>', '<template_name>', {
   template: 'variables',
   go: { in: 'here' }
 }, function(err) {
@@ -42,5 +36,5 @@ Choose a new name for the template and create 3 files:
 * `templatename.html` - Contains HTML formatted email body (hbs supported)
 
 Once these files are added to the templates directory, you can reference them 
-by `templatename` when calling `Mailer#dispatch`.
+by `templatename` when calling `Mailer#dispatchSendGrid`.
 

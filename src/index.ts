@@ -1,23 +1,20 @@
 import path from 'path';
 import fs from 'fs';
-import async from 'async';
 import assert from 'assert';
-import nodemailer from 'nodemailer';
 import handlebars from 'handlebars';
 import sgMail from '@sendgrid/mail'
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { ContextName } from './context';
 
-interface MailerOptions extends Omit<SMTPTransport.Options, 'from'> {
+interface MailerOptions {
   sendgrid: {
     api_key: string
   },
-  from: string
+  from: string,
+  [key: string]: any
 }
 
 class Mailer {
   private options: MailerOptions;
-  private transporter: nodemailer.Transporter;
 
   constructor(options: MailerOptions) {
     options = options || {};
@@ -32,37 +29,6 @@ class Mailer {
     }
 
     this.options = options;
-    this.transporter = nodemailer.createTransport(options);
-  }
-
-  /**
-   * Sends the email template to the specified address
-   * using SMTP protocol
-   * #dispatch
-   * @param {String} email
-   * @param {String} template
-   * @param {Object} context
-   * @param {Function} callback
-   */
-  dispatch(email: string, template: ContextName, context: any, callback: any) {
-    const done = callback || function () { };
-
-    this.getTemplate(template, (err, template) => {
-      if (err) {
-        return done(err);
-      }
-
-      let compiled = template(context);
-      let mailparams: any = {
-        to: email,
-        from: this.options.from,
-        subject: compiled.subject,
-        html: compiled.markup,
-        text: compiled.plaintext
-      };
-
-      this.transporter.sendMail(mailparams, done);
-    });
   }
 
   /**
@@ -113,17 +79,15 @@ class Mailer {
   getTemplate(name: string, callback: (err: Error | null, template?: any) => void) {
     assert.ok(name, 'No template name was supplied');
 
-    const stack: ((callback: any) => void)[] = [
-      this.getSubject.bind(this, name),
-      this.getMarkup.bind(this, name),
-      this.getPlaintext.bind(this, name)
-    ];
+    const loaders = [this.getSubject, this.getMarkup, this.getPlaintext].map((loader) =>
+      new Promise<HandlebarsTemplateDelegate<any>>((resolve, reject) => {
+        loader.call(this, name, (err: Error | null, template?: HandlebarsTemplateDelegate<any>) => {
+          err ? reject(err) : resolve(template!);
+        });
+      })
+    );
 
-    async.parallel<(callback: any) => void>(stack, function (err, results: any) {
-      if (err) {
-        return callback(err);
-      }
-
+    Promise.all(loaders).then((results) => {
       callback(null, function render(data: any) {
         data = data || {};
 
@@ -133,7 +97,7 @@ class Mailer {
           plaintext: results[2](data)
         };
       });
-    });
+    }, (err) => callback(err));
   };
 
   /**
